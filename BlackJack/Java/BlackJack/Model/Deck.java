@@ -25,9 +25,27 @@ public class Deck {
   
   private void Add(Card a_toIncludeInDeck) {
     m_cards.add(a_toIncludeInDeck);
-    System.out.println("" + a_toIncludeInDeck.GetValue() + " of " + a_toIncludeInDeck.GetColor());  
+      
+  }
+  
+  public Iterable<Card> GetCards()
+  {
+      return m_cards;
+  }
+  
+  public Card GetFirstCard() {
+    Card c = m_cards.get(0);
+    m_cards.remove(0);
+    return c;
   }
   
   private void Shuffle() {
+    for (int i = 0; i < 1017; i++)
+    {
+        int index = (int)(Math.random() * 171717.0) % m_cards.size();
+        Card c = m_cards.get(index);
+        m_cards.remove(index);
+        Add(c);
+    }
   }
 }

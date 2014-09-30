@@ -42,5 +42,8 @@ public class Card {
   public Value GetValue() {
     return m_value;
   }
+  
+  public void Show() {
+  }
 
 }
