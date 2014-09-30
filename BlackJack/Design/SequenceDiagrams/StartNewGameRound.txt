@@ -1,0 +1,51 @@
+Paste text below into https://www.websequencediagrams.com/
+
+title Start New Game Round Scenario
+
+":RunBlackJack"->+":Controller::PlayGame":Play(a_dealer, a_player, a_view)
+":Controller::PlayGame"->+"a_view:View::Console":DisplayWelcomeMessage()
+"a_view:View::Console"-->-":Controller::PlayGame":
+
+":Controller::PlayGame"->+"a_view:View::Console":PresentHands(a_dealer, a_view)
+"a_view:View::Console"-->-":Controller::PlayGame":
+
+":Controller::PlayGame"->+"a_view:View::Console":GetEvent()
+"a_view:View::Console"-->-":Controller::PlayGame": StartNewRound
+
+":Controller::PlayGame"-->+"a_dealer:Model::Dealer":StartNewRound(a_player)
+"a_dealer:Model::Dealer"->+"m_deck:Model::Deck":create
+"m_deck:Model::Deck"-->-"a_dealer:Model::Dealer":
+
+"a_dealer:Model::Dealer"->+"m_deck:Model::Deck":GetFirstCard()
+"m_deck:Model::Deck"-->-"a_dealer:Model::Dealer":c
+"a_dealer:Model::Dealer"->+"c:Model::Card":Show()
+"c:Model::Card"-->-"a_dealer:Model::Dealer":
+"a_dealer:Model::Dealer"->+"a_player:Model::Player":HandCard(c)
+"a_player:Model::Player"-->-"a_dealer:Model::Dealer":
+
+"a_dealer:Model::Dealer"->+"m_deck:Model::Deck":GetFirstCard()
+"m_deck:Model::Deck"-->-"a_dealer:Model::Dealer":c
+"a_dealer:Model::Dealer"->+"c:Model::Card":Show()
+"c:Model::Card"-->-"a_dealer:Model::Dealer":
+"a_dealer:Model::Dealer"->+"a_dealer:Model::Dealer":HandCard(c)
+"a_dealer:Model::Dealer"-->-"a_dealer:Model::Dealer":
+
+"a_dealer:Model::Dealer"->+"m_deck:Model::Deck":GetFirstCard()
+"m_deck:Model::Deck"-->-"a_dealer:Model::Dealer":c
+"a_dealer:Model::Dealer"->+"c:Model::Card":Show()
+"c:Model::Card"-->-"a_dealer:Model::Dealer":
+"a_dealer:Model::Dealer"->+"a_player:Model::Player":HandCard(c)
+"a_player:Model::Player"-->-"a_dealer:Model::Dealer":
+
+"a_dealer:Model::Dealer"->+"m_deck:Model::Deck":GetFirstCard()
+"m_deck:Model::Deck"-->-"a_dealer:Model::Dealer":c
+"a_dealer:Model::Dealer"->+"c:Model::Card":Show()
+"c:Model::Card"-->-"a_dealer:Model::Dealer":
+"a_dealer:Model::Dealer"->+"a_dealer:Model::Dealer":HandCard(c)
+"a_dealer:Model::Dealer"-->-"a_dealer:Model::Dealer":
+
+"a_dealer:Model::Dealer"-->-":Controller::PlayGame":
+
+
+":Controller::PlayGame"-->-":RunBlackJack": Continue
+

@@ -1,0 +1,49 @@
+Paste text below into https://www.websequencediagrams.com/
+
+title Game Start up and main loop
+
+JRE->":RunBlackJack": main()
+":RunBlackJack"->+"d:Model::Dealer": create
+"d:Model::Dealer"-->-":RunBlackJack": 
+
+":RunBlackJack"->+"p:Model::Player": create
+"p:Model::Player"-->-":RunBlackJack":
+
+":RunBlackJack"->+"v:View::Console": create
+"v:View::Console"-->-":RunBlackJack":
+
+":RunBlackJack"->+"c:Controller::PlayGame": create
+"c:Controller::PlayGame"-->-":RunBlackJack":
+
+loop until quit
+":RunBlackJack"->+"c:Controller::PlayGame":Play(d, p, v)
+"c:Controller::PlayGame"->+"v:View::Console":DisplayWelcomeMessage()
+"v:View::Console"-->-"c:Controller::PlayGame":
+
+"c:Controller::PlayGame"->+"v:View::Console":PresentHands(a_dealer, a_view)
+
+  "v:View::Console"->+"d:Model::Dealer":GetHand()
+  "d:Model::Dealer"-->-"v:View::Console":
+  loop for every card in hand
+    "v:View::Console"->+":Model::Card": GetColor()
+    ":Model::Card"-->-"v:View::Console": 
+    "v:View::Console"->+":Model::Card": GetValue()
+    ":Model::Card"-->-"v:View::Console": 
+  end
+
+  "v:View::Console"->+"p:Model::Player":GetHand()
+  "p:Model::Player"-->-"v:View::Console":
+  loop for every card in hand
+    "v:View::Console"->+":Model::Card": GetColor()
+    ":Model::Card"-->-"v:View::Console": 
+    "v:View::Console"->+":Model::Card": GetValue()
+    ":Model::Card"-->-"v:View::Console": 
+  end
+"v:View::Console"-->-"c:Controller::PlayGame":
+
+  "c:Controller::PlayGame"->+"v:View::Console":GetEvent()
+  "v:View::Console"->+"v:View::Console":GetInput()
+  "v:View::Console"-->-"v:View::Console":
+  "v:View::Console"-->-"c:Controller::PlayGame": StartNewRound/Quit
+  "c:Controller::PlayGame"-->-":RunBlackJack": Quit/Continue
+end

@@ -1,0 +1,29 @@
+Paste text below into https://www.websequencediagrams.com/
+
+title construction of Model::Deck
+
+Client-->+":Deck":create
+loop for every color and value
+  ":Deck"->+"c:Card":c:=create(col, val)
+  "c:Card"-->-":Deck":
+  ":Deck"->+":Deck":Add(c)
+  ":Deck"-->-":Deck":
+end
+
+
+":Deck"->+":Deck":Shuffle()
+loop a lot of times
+note left of ":Deck"
+The idea is to pick
+and remove a random
+card and then add it
+at the front
+end note
+
+":Deck"->":Deck":c:=PickRandomCard
+":Deck"->+":Deck":Add(c)
+":Deck"-->-":Deck":
+":Deck"-->-":Deck":
+end
+
+":Deck"-->-Client:
