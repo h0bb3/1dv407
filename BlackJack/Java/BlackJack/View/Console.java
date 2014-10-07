@@ -20,7 +20,6 @@ public class Console {
       } else if (c == 'q') {
         return Event.Quit;
       }
-    
     }
   }
   
@@ -30,22 +29,15 @@ public class Console {
     for(BlackJack.Model.Card c : a_dealer.GetHand()) {
       System.out.print("" + c.GetValue() + " of " + c.GetColor() + " ");
     }
-    System.out.println();
+    System.out.println(": " + a_dealer.GetScore());
     
     
     System.out.print("Player Cards:");
     for(BlackJack.Model.Card c : a_player.GetHand()) {
       System.out.print("" + c.GetValue() + " of " + c.GetColor() + " ");
     }
-    System.out.println();
+    System.out.println(": " + a_player.GetScore());
     
-  }
-
-  public void PresentDeck(BlackJack.Model.Deck a_deck) {
-  
-    for(BlackJack.Model.Card c : a_deck.GetCards()) {
-      System.out.println("" + c.GetValue() + " of " + c.GetColor());
-    }
   }
   
   protected int GetInputChar() {

@@ -7,7 +7,8 @@ public class Card {
     Spades,
     Diamonds,
     Clubs,
-    Count
+    Count,
+    Hidden
   }
   
   public enum Value {
@@ -24,26 +25,38 @@ public class Card {
     Queen,
     King,
     Ace,
-    Count
+    Count,
+    Hidden
   }
   
   private Color m_color;
-  private Value m_value;  
+  private Value m_value;
+  private boolean m_isHidden;  
 
   public Card(Color a_color, Value a_value) {
     m_value = a_value;
     m_color = a_color;
+    m_isHidden = true;
   }
   
   public Color GetColor() {
+    if (m_isHidden) {
+      return Color.Hidden;
+    }
     return m_color;
   }
   
   public Value GetValue() {
+    if (m_isHidden) {
+      return Value.Hidden;
+    }
     return m_value;
   }
   
   public void Show() {
+    m_isHidden = false;
   }
+  
+
 
 }

@@ -1,0 +1,12 @@
+paste the code below into yuml.me
+
+[Model::Deck]->*m_cards[Model::Card]
+[Model::Dealer]-^[Model::Player]
+[Model::Dealer]-.->[Model::Player]
+[Controller::PlayGame]-.->[Model::Dealer]
+[Controller::PlayGame]-.->[Model::Player]
+[Model::Player]->*m_hand[Model::Card]
+[Controller::PlayGame]-.->[View::Console]
+[View::Console]-.->[Model::Card]
+[View::Console]-.->[Model::Dealer]
+[View::Console]-.->[Model::Player]
