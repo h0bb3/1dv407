@@ -24,5 +24,4 @@ paste the code below into yuml.me
 
 [Model::Deck]-.->[<<Enum>> Model::Card::Color]
 [Model::Deck]-.->[<<Enum>> Model::Card::Value]
-[Model::Dealer]-.->[<<Enum>> Model::Card::Value]
-
+[Model::Player]-.->[<<Enum>> Model::Card::Value]
