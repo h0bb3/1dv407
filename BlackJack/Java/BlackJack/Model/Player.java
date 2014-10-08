@@ -15,11 +15,15 @@ public class Player {
       return m_hand;
   }
   
+  protected boolean HasCards() {
+    return m_hand.size() > 0;
+  }
+  
   protected void ClearHand() {
     m_hand.clear();
   }
   
-  protected void DealCard(Card c) {
+  public void DealCard(Card c) {
     m_hand.add(c);
   }
   

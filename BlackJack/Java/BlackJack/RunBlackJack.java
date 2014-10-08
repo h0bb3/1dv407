@@ -12,7 +12,7 @@ public class RunBlackJack {
     BlackJack.View.Console v = new BlackJack.View.Console();
     BlackJack.Controller.PlayGame c = new BlackJack.Controller.PlayGame();
     
-    BlackJack.Model.Dealer d = new BlackJack.Model.Dealer();
+    BlackJack.Model.Dealer d = new BlackJack.Model.Dealer(new BlackJack.Model.Rules.EuroNewGameStrategy());
     BlackJack.Model.Player p = new BlackJack.Model.Player();
     
     while(c.Play(d, p, v));

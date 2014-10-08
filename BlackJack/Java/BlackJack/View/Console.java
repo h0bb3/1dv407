@@ -4,12 +4,23 @@ public class Console {
 
   public enum Event {
     StartNewRound,
+    Hit,
+    Stand,
     Quit
   }
   
   public void DisplayWelcomeMessage() {
     System.out.println("Hello Black Jack World\n");
-    System.out.println("n for new game round, q to quit\n");
+    System.out.println("n for New game round, q to Quit, h to Hit, s to Stand\n");
+  }
+  
+  public void DisplayWinner(boolean a_isPlayerWinner) {
+  
+    if (a_isPlayerWinner) {
+      System.out.println("You won!");
+    } else {
+      System.out.println("You lost!");
+    }
   }
   
   public Event GetEvent() {
@@ -19,25 +30,25 @@ public class Console {
         return Event.StartNewRound;
       } else if (c == 'q') {
         return Event.Quit;
+      } else if (c == 'h') {
+        return Event.Hit;
+      } else if (c == 's') {
+        return Event.Stand;
       }
     }
   }
   
-  public void PresentHands(BlackJack.Model.Dealer a_dealer, BlackJack.Model.Player a_player) {
+  private void DisplayHand(String a_playerText, Iterable<BlackJack.Model.Card> a_hand, int a_score) {
+    System.out.print(a_playerText);
+    for(BlackJack.Model.Card c : a_hand) {
+      System.out.print("" + c.GetValue() + " of " + c.GetColor() + " ");
+    }
+    System.out.println(": " + a_score);  
+  }
   
-    System.out.print("Dealer Cards:");
-    for(BlackJack.Model.Card c : a_dealer.GetHand()) {
-      System.out.print("" + c.GetValue() + " of " + c.GetColor() + " ");
-    }
-    System.out.println(": " + a_dealer.GetScore());
-    
-    
-    System.out.print("Player Cards:");
-    for(BlackJack.Model.Card c : a_player.GetHand()) {
-      System.out.print("" + c.GetValue() + " of " + c.GetColor() + " ");
-    }
-    System.out.println(": " + a_player.GetScore());
-    
+  public void PresentHands(Iterable<BlackJack.Model.Card> a_dealerHand, int a_dealerScore, Iterable<BlackJack.Model.Card> a_playerHand, int a_playerScore) {
+    DisplayHand("Dealer Cards:", a_dealerHand, a_dealerScore);
+    DisplayHand("Player Cards:", a_playerHand, a_playerScore);
   }
   
   protected int GetInputChar() {

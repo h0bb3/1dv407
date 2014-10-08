@@ -28,6 +28,10 @@ public class Deck {
       
   }
   
+  public boolean HasCards() {
+    return m_cards.size() > 0;
+  }
+  
   public Iterable<Card> GetCards()
   {
       return m_cards;
