@@ -1,10 +1,10 @@
 paste the code below into yuml.me
 
 [Model::Dealer]->m_startNewGameRule[<<Interface>> Model::Rules::INewGameStrategy]
-[AmericanNewGameStrategy]-.-^[<<Interface>> Model::Rules::INewGameStrategy]
-[EuroNewGameStrategy]-.-^[<<Interface>> Model::Rules::INewGameStrategy]
-[EuroNewGameStrategy]-.->[Model::Card]
-[AmericanNewGameStrategy]-.->[Model::Card]
+[Model::Rules:: AmericanNewGameStrategy]-.-^[<<Interface>> Model::Rules::INewGameStrategy]
+[Model::Rules:: EuroNewGameStrategy]-.-^[<<Interface>> Model::Rules::INewGameStrategy]
+[Model::Rules:: EuroNewGameStrategy]-.->[Model::Card]
+[Model::Rules:: AmericanNewGameStrategy]-.->[Model::Card]
 [<<Interface>> Model::Rules::INewGameStrategy]-.->[Model::Deck]
 [<<Interface>> Model::Rules::INewGameStrategy]-.->[Model::Player]
 [Model::Deck]->*m_cards[Model::Card]
