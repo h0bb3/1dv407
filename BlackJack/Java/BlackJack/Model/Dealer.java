@@ -3,14 +3,14 @@ package BlackJack.Model;
 import java.util.List;
 import java.util.LinkedList;
 
-public class Dealer extends Player {
+class Dealer extends Player {
 
   Deck m_deck;
   BlackJack.Model.Rules.INewGameStrategy m_startNewGameRules;
   
   
-  public Dealer(BlackJack.Model.Rules.INewGameStrategy a_startGameRules) {
-    m_startNewGameRules = a_startGameRules;
+  public Dealer(BlackJack.Model.Rules.RulesFactory a_rulesFactory) {
+    m_startNewGameRules = a_rulesFactory.GetStartNewGameRule();
     m_deck = null;
   }
 

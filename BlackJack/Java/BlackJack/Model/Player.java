@@ -3,7 +3,7 @@ package BlackJack.Model;
 import java.util.List;
 import java.util.LinkedList;
 
-public class Player {
+class Player {
 
   List<Card> m_hand;
 
